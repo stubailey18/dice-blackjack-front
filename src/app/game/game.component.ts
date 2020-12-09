@@ -11,7 +11,7 @@ export class GameComponent implements OnInit {
   inGamePlayers: Array<InGamePlayer>;
 
   ngOnInit(): void {
-    this.webSocket = new WebSocket('ws://localhost:8080/diceblackjack');
+    this.webSocket = new WebSocket('ws://dice-blackjack-back.herokuapp.com/diceblackjack');
     this.webSocket.onmessage = message => {
       const game = JSON.parse(message.data);
       this.inGamePlayers = game.inGamePlayers;
