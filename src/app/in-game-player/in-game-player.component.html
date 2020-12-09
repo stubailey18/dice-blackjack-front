@@ -1,0 +1,26 @@
+<div class="card text-center">
+    <div class="card-header">
+        <p class="mb-0">Name: {{inGamePlayer.player.name}}</p>
+        <p class="mb-0">Games played: {{inGamePlayer.player.gamesPlayed}}</p>
+        <p class="mb-0">Points: {{inGamePlayer.player.points}}</p>
+    </div>
+    <div class="card-body">
+        <p style="font-size: 1.5em">Total: {{inGamePlayer.total}}</p>
+        <p *ngIf="inGamePlayer.die1Value">
+            <fa-icon [icon]="getDieIcon(inGamePlayer.die1Value)" class="fa-3x"></fa-icon>&nbsp;
+            <fa-icon *ngIf="inGamePlayer.die2Value" [icon]="getDieIcon(inGamePlayer.die2Value)" class="fa-3x"></fa-icon>
+        </p>
+        <p *ngIf="!inGamePlayer.die1Value" style="font-size: 3em">&nbsp;</p>
+        <p class="mb-0"># rolls: {{inGamePlayer.numRolls}}</p>
+    </div>
+    <div class="card-footer d-flex justify-content-around">
+        <button 
+            [disabled]="inGamePlayer.total > 21 || inGamePlayer.standing"
+            (click)="handleHit()" 
+            class="btn btn-primary">Hit <span *ngIf="inGamePlayer.total >= 16">(1)</span></button>
+        <button 
+            [disabled]="inGamePlayer.total < 16 || inGamePlayer.total > 21 || inGamePlayer.standing"
+            (click)="handleStand()" 
+            class="btn btn-primary">Stand</button>
+    </div>
+</div>

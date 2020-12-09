@@ -1,0 +1,11 @@
+<div class="row justify-content-center">
+    <app-in-game-player 
+        *ngFor="let inGamePlayer of inGamePlayers"
+        [inGamePlayer] = "inGamePlayer"
+        (hit)="handleHit(inGamePlayer.player.id)"
+        (stand)="handleStand(inGamePlayer.player.id)"
+        class="col-10 col-sm-6 col-md-5 col-lg-4 mb-4"></app-in-game-player>
+</div>
+<div *ngIf="inGamePlayers && inGamePlayers.length" class="row justify-content-center">
+    <p><button (click)="handleNewGame()" class="btn btn-dark">New Game</button></p>
+</div>
