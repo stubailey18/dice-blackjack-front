@@ -35,7 +35,9 @@ export class GameComponent implements OnInit {
     this.webSocket.onopen = () => {
       this.loading = false;
       const playerName = prompt('Your name: ');
-      this.webSocket.send(`join:${playerName}`);
+      if (playerName) {
+        this.webSocket.send(`join:${playerName}`);
+      }
     }
   }
 
