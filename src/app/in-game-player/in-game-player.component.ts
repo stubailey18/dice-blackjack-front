@@ -9,6 +9,7 @@ import { Player } from '../player.model';
 })
 export class InGamePlayerComponent {
 
+  @Input() playerId: number;
   @Input() inGamePlayer: InGamePlayer;
   @Output('hit') hitEventEmitter: EventEmitter<void> = new EventEmitter<void>();
   @Output('stand') standEventEmitter: EventEmitter<void> = new EventEmitter<void>();

@@ -1,6 +1,6 @@
 <div class="card text-center">
     <div class="card-header">
-        <p class="mb-0">Name: {{inGamePlayer.player.name}}</p>
+        <p class="mb-0" [ngClass]="{'font-weight-bold': playerId === inGamePlayer.player.id}">{{inGamePlayer.player.name}}</p>
         <p class="mb-0">Games played: {{inGamePlayer.player.gamesPlayed}}</p>
         <p class="mb-0">Points: {{inGamePlayer.player.points}}</p>
     </div>
@@ -13,7 +13,7 @@
         <p *ngIf="!inGamePlayer.die1Value" style="font-size: 3em">&nbsp;</p>
         <p class="mb-0"># rolls: {{inGamePlayer.numRolls}}</p>
     </div>
-    <div class="card-footer d-flex justify-content-around">
+    <div *ngIf="playerId === inGamePlayer.player.id" class="card-footer d-flex justify-content-around">
         <button 
             [disabled]="inGamePlayer.total > 21 || inGamePlayer.standing"
             (click)="handleHit()" 

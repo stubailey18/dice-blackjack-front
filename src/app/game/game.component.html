@@ -1,6 +1,13 @@
 <div class="row justify-content-center">
+    <p *ngIf="loading" #loadingParagraph>
+        Loading<span *ngIf="!numDots">&nbsp;&nbsp;&nbsp;</span>
+        <span *ngIf="numDots === 1">.&nbsp;&nbsp;</span>
+        <span *ngIf="numDots === 2">..&nbsp;</span>
+        <span *ngIf="numDots === 3">...</span>
+    </p>
     <app-in-game-player 
         *ngFor="let inGamePlayer of inGamePlayers"
+        [playerId]="playerId"
         [inGamePlayer] = "inGamePlayer"
         (hit)="handleHit(inGamePlayer.player.id)"
         (stand)="handleStand(inGamePlayer.player.id)"
