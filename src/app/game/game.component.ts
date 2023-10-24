@@ -21,7 +21,7 @@ export class GameComponent implements OnInit {
         this.numDots = 0;
       }
     }, 500);
-    this.webSocket = new WebSocket('wss://dice-blackjack-back.herokuapp.com/diceblackjack');
+    this.webSocket = new WebSocket('wss://stubailey18.com:8080/diceblackjack');
     this.webSocket.onmessage = message => {
       const [key, value] = message.data.split('::');
       if (key === 'playerId') {
